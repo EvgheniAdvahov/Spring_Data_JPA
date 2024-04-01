@@ -1,0 +1,1 @@
+docker run -d -v "C:/Users/evghe/Documents/docker data/data/pgdata:/var/lib/postgresql/data" --name postgerdb -e POSTGRES_USER=evad -e POSTGRES_PASSWORD=1234 -p 5432:5432 postgres
