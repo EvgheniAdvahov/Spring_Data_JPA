@@ -14,7 +14,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @Data
 @Entity
-@DiscriminatorValue("T")
+//@DiscriminatorValue("T")
 public class Text extends Resource {
     private String content;
 }
