@@ -1,11 +1,11 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/mydatajpa
+    url: jdbc:postgresql://localhost:5432/postgres
     username: evad
     password: 1234
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     database: postgresql
     show-sql: true
