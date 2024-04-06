@@ -48,7 +48,14 @@ public class JpaApplication {
 //			repository.updateAuthor(37, 1);
 
 			// update all Authors age
-			repository.updateAllAuthoresAges(21);
+//			repository.updateAllAuthoresAges(21);
+
+			// find all by named quer
+			repository.findByNamedQuery(45)
+					.forEach(System.out::println);
+
+			//update by named query
+//			repository.updateNamedQuery(22);
 
 			/*var video = Video.builder()
 					.name("abc")
