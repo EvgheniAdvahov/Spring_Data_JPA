@@ -23,16 +23,32 @@ public class JpaApplication {
 			VideoRepository videoRepository
 	){
 		return args -> {
-			/*for (int i = 0; i < 50; i++) {
+			for (int i = 0; i < 50; i++) {
 				Faker faker = new Faker();
 				var author = Author.builder()
 						.firstName(faker.name().firstName())
 						.lastName(faker.name().lastName())
 						.age(faker.number().numberBetween(19, 50))
-						.email("test" +i + "@mail.com")
+						.email(faker.name().username() + "@mail.com")
 						.build();
 				repository.save(author);
-			}*/
+			}
+
+			//update author with ID 1
+			var author = Author.builder()
+					.id(1)
+					.firstName("Evgheni")
+					.lastName("Advahov")
+					.age(36)
+					.email("evgheniAdvahov@mail.com")
+					.build();
+//			repository.save(author);
+
+			// update Author a set a.age = 22 where a.id = 1
+//			repository.updateAuthor(37, 1);
+
+			// update all Authors age
+			repository.updateAllAuthoresAges(21);
 
 			/*var video = Video.builder()
 					.name("abc")
