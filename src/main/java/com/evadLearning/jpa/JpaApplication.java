@@ -4,11 +4,13 @@ import com.evadLearning.jpa.models.Author;
 import com.evadLearning.jpa.models.Video;
 import com.evadLearning.jpa.repositories.AuthorRepository;
 import com.evadLearning.jpa.repositories.VideoRepository;
+import com.evadLearning.jpa.specification.AuthorSpecification;
 import com.github.javafaker.Faker;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.domain.Specification;
 
 @SpringBootApplication
 public class JpaApplication {
@@ -31,17 +33,17 @@ public class JpaApplication {
 						.age(faker.number().numberBetween(19, 50))
 						.email(faker.name().username() + "@mail.com")
 						.build();
-				repository.save(author);
+//				repository.save(author);
 			}
 
 			//update author with ID 1
-			var author = Author.builder()
-					.id(1)
-					.firstName("Evgheni")
-					.lastName("Advahov")
-					.age(36)
-					.email("evgheniAdvahov@mail.com")
-					.build();
+//			var author = Author.builder()
+//					.id(1)
+//					.firstName("Evgheni")
+//					.lastName("Advahov")
+//					.age(36)
+//					.email("evgheniAdvahov@mail.com")
+//					.build();
 //			repository.save(author);
 
 			// update Author a set a.age = 22 where a.id = 1
@@ -51,11 +53,17 @@ public class JpaApplication {
 //			repository.updateAllAuthoresAges(21);
 
 			// find all by named quer
-			repository.findByNamedQuery(45)
-					.forEach(System.out::println);
+//			repository.findByNamedQuery(45)
+//					.forEach(System.out::println);
 
 			//update by named query
 //			repository.updateNamedQuery(22);
+
+			Specification<Author> spec = Specification
+					.where(AuthorSpecification.hasAge(43))
+					.or(AuthorSpecification.firstnameLike("Merlin"));
+
+			repository.findAll(spec).forEach(System.out::println);
 
 			/*var video = Video.builder()
 					.name("abc")
